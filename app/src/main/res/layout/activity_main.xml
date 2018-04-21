@@ -21,7 +21,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="304dp" />
+
+    <Button
+        android:id="@+id/set_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Location"
+        tools:layout_editor_absoluteX="203dp"
+        tools:layout_editor_absoluteY="114dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias=".75"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".13"/>
+
 
 </android.support.constraint.ConstraintLayout>

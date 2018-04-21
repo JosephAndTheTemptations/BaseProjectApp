@@ -1,4 +1,6 @@
 <resources>
-    <string name="app_name">BaseProjectApp</string>
+    <string name="app_name">Hermes</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_home">Committed\u0020Messages</string>
+    <string name="title_activity_set_destination">Set\u0020Destination</string>
 </resources>

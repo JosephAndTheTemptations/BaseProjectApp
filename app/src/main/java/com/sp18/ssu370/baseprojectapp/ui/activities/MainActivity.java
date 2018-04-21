@@ -12,6 +12,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button getLocation;
 
+    private Button setLocation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,5 +25,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, MapsActivity.class));
             }
         });
+
+        setLocation = findViewById(R.id.set_location);
+        setLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               //startActivity(new Intent(MainActivity.this, SetDestinationActivity.class));
+                startActivity(new Intent(MainActivity.this, MapsActivity.class));
+            }
+        });
+
     }
 }
