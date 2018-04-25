@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import com.sp18.ssu370.baseprojectapp.R;
 
-public class MainActivity extends AppCompatActivity {
+public class CreateMessageActivity extends AppCompatActivity {
 
     private Button getLocation;
 
@@ -17,12 +17,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.create_message);
         getLocation = findViewById(R.id.location_button);
         getLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, MapsActivity.class));
+                startActivity(new Intent(CreateMessageActivity.this, MapsActivity.class));
             }
         });
 
@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         setLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               //startActivity(new Intent(MainActivity.this, SetDestinationActivity.class));
-                startActivity(new Intent(MainActivity.this, MapsActivity.class));
+               //startActivity(new Intent(CreateMessageActivity.this, SetDestinationActivity.class));
+                startActivity(new Intent(CreateMessageActivity.this, MapsActivity.class));
             }
         });
 

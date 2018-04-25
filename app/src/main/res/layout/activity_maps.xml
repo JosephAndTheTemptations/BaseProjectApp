@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity">
+    tools:context="com.sp18.ssu370.baseprojectapp.ui.activities.CreateMessageActivity">
 
         <fragment
             android:id="@+id/map"
