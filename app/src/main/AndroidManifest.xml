@@ -49,11 +49,6 @@
             android:label="@string/title_activity_set_destination"></activity>
 
         <activity
-            android:name=".ui.activities.HomeActivity">
-            <!--android:label="@string/title_activity_home">-->
-        </activity>
-
-        <activity
             android:name=".ui.activities.SetDestinationActivity"
             android:label="@string/title_activity_set_destination"></activity>
 
