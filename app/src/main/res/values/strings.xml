@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">BaseProjectApp</string>
+    <string name="app_name">Hermes</string>
+    <string name="edit_button">Edit</string>
+    <string name="search_button">Search</string>
+    <string name="recent_messages">Recent Messages</string>
+    <string name="create_message">Create</string>
+    <string name="committed_messages">Committed\u0020Messages</string>
 </resources>
