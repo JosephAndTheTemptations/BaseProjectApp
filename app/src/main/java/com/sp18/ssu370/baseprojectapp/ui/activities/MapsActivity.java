@@ -342,7 +342,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
             //hideSoftKeyboard();
             mMap.addMarker(new MarkerOptions().position(latLng).title(str));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            //mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.2f));
             hideSoftKeyboard();
 
         }

@@ -25,7 +25,9 @@
         android:theme="@style/AppTheme">
     <!--android:theme="@style/AppTheme"-->
 
-        <activity android:name=".ui.activities.CreateMessageActivity">
+        <activity
+            android:name=".ui.activities.CreateMessageActivity"
+            android:label="Basic Message or Travel Information">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
