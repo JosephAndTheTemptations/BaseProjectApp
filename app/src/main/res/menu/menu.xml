@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/settings_name"
+        app:showAsAction="never" />
 
+    <item
+        android:id="@+id/create_message"
+        android:title="@string/create_message_button"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/map_settings"
+        android:title="@string/map_button"
+        app:showAsAction="never" />
 </menu>
