@@ -10,27 +10,16 @@ import com.sp18.ssu370.baseprojectapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button getLocation;
-
     private Button setLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_message);
-        getLocation = findViewById(R.id.location_button);
-        getLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, MapsActivity.class));
-            }
-        });
-
+        setContentView(R.layout.activity_main);
         setLocation = findViewById(R.id.set_location);
         setLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               //startActivity(new Intent(MainActivity.this, SetDestinationActivity.class));
                 startActivity(new Intent(MainActivity.this, MapsActivity.class));
             }
         });
