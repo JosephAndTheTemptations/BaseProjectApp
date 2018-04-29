@@ -31,6 +31,7 @@ import android.widget.Filterable;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.data.DataBufferUtils;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.AutocompletePrediction;
@@ -65,6 +66,7 @@ public class PlaceAutocompleteAdapter
      * Handles autocomplete requests.
      */
     private GeoDataClient mGeoDataClient;
+    //private GoogleApiClient mGoogleApiClient;
 
     /**
      * The bounds used for Places Geo Data autocomplete API requests.
@@ -209,6 +211,10 @@ public class PlaceAutocompleteAdapter
         Task<AutocompletePredictionBufferResponse> results =
                 mGeoDataClient.getAutocompletePredictions(constraint.toString(), mBounds,
                         mPlaceFilter);
+        /*Task<AutocompletePredictionBufferResponse> results =
+                mGoogleApiClient.getAutocompletePredictions(constraint.toString(), mBounds,
+                        mPlaceFilter);*/
+
 
         // This method should have been called off the main UI thread. Block and wait for at most
         // 60s for a result from the API.

@@ -22,17 +22,22 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.places.GeoDataClient;
+import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.sp18.ssu370.baseprojectapp.R;
 
@@ -41,7 +46,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 //public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback,
+        GoogleApiClient.OnConnectionFailedListener{
 
     private GoogleMap mMap;
     //private GoogleApiClient client;
@@ -51,13 +57,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
+    private static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(
+            new LatLng(-40, -168), new LatLng(71, 136));
+
 
 
     private Boolean mLocationPermissionGranted = false;
 
     private boolean startLocation = true;
 
-    private EditText mSearchText;
+    private AutoCompleteTextView mSearchText;
+
+    private PlaceAutocompleteAdapter mPlaceAutoCompleteAdapter;
+
+    private GoogleApiClient mGoogleApiClient;
+
+    private GeoDataClient mGeoDataClient;
 
 
     LocationManager locationManager;
@@ -68,13 +83,33 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         //setContentView(R.layout.activity_maps);
         setContentView(R.layout.activity_set_destination);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        mSearchText = (EditText) findViewById(R.id.search_edit_text);
+        mSearchText = (AutoCompleteTextView) findViewById(R.id.search_edit_text);
 
         getLocationPermission();
 
     }
 
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
     private void init(){
+
+        mGoogleApiClient = new GoogleApiClient
+                .Builder(this)
+                .addApi(Places.GEO_DATA_API)
+                .addApi(Places.PLACE_DETECTION_API)
+                .enableAutoManage(this, this)
+                .build();
+
+        mGeoDataClient = Places.getGeoDataClient(this);
+
+        mPlaceAutoCompleteAdapter = new PlaceAutocompleteAdapter(this, mGeoDataClient, LAT_LNG_BOUNDS,
+                null);
+
+        mSearchText.setAdapter(mPlaceAutoCompleteAdapter);
+
         mSearchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent keyEvent) {
@@ -353,10 +388,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(mSearchText.getWindowToken(), 0);
 
+        }
 
-
-
-    //this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-    }
 
 }
