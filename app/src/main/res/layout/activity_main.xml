@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.sp18.ssu370.baseprojectapp.ui.activities.MainActivity">
 
+
     <include
         android:id="@+id/app_bar"
         layout="@layout/app_bar" />
