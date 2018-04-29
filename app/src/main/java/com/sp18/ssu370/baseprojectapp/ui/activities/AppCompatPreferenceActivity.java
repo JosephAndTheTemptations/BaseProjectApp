@@ -1,4 +1,4 @@
-package com.sp18.ssu370.baseprojectapp;
+package com.sp18.ssu370.baseprojectapp.ui.activities;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

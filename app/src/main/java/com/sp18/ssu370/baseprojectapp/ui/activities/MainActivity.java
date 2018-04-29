@@ -1,7 +1,6 @@
 package com.sp18.ssu370.baseprojectapp.ui.activities;
 
 import android.content.Intent;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,7 +13,6 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.sp18.ssu370.baseprojectapp.R;
-import com.sp18.ssu370.baseprojectapp.SettingsActivity;
 
 import java.util.ArrayList;
 
