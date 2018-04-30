@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.map_settings:
-                Toast.makeText(getApplicationContext(), "Map", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, MapsActivity.class));
                 // Go to the map
                 break;
             case R.id.action_settings:

@@ -49,6 +49,7 @@
 
         <activity
             android:name=".ui.activities.MapsActivity"
+            android:theme="@style/AppTheme"
             android:label="@string/title_activity_set_destination"></activity>
 
 
