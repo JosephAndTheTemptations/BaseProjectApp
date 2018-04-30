@@ -1,8 +1,15 @@
 <resources>
 
     <!-- Base application theme. -->
+  
+  <!-- Add Christian's theme here -->
+  
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        </style>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 
         <!-- Customize your theme here. -->
     <style name="CustomToolbarStyle" parent="Theme.AppCompat.Light.NoActionBar">
@@ -11,15 +18,18 @@
         <!--
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
+
         <item name="android:windowBackground">@color/windowBackground</item>
         -->
         <item name="android:background">@color/colorPrimary</item>
+
     </style>
 
     <style name="CustomPopupStyle" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:background">@color/colorAccent</item>
         <item name="overlapAnchor">false</item>
         <item name="android:dropDownVerticalOffset">-4dp</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 
     </style>
     

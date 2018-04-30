@@ -1,9 +1,9 @@
 package com.sp18.ssu370.baseprojectapp.ui.activities;
 
 import android.content.Intent;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -13,8 +13,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+
 import com.sp18.ssu370.baseprojectapp.R;
-import com.sp18.ssu370.baseprojectapp.SettingsActivity;
 
 import java.util.ArrayList;
 
@@ -22,16 +22,31 @@ import static com.sp18.ssu370.baseprojectapp.R.id.app_bar;
 
 public class MainActivity extends AppCompatActivity {
 
+
     private static final String TAG = "MainActivity";
 
     //vars
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+      
+
+      /*
+        setLocation = findViewById(R.id.set_location);
+        setLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MapsActivity.class));
+            }
+        });
+        */
+      
+
         Toolbar myToolbar = (Toolbar) findViewById(app_bar);
         setSupportActionBar(myToolbar);
         Log.d(TAG, "onCreate: started.");
@@ -51,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.map_settings:
-                Toast.makeText(getApplicationContext(), "Map", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, MapsActivity.class));
                 // Go to the map
                 break;
             case R.id.action_settings:
@@ -102,5 +117,6 @@ public class MainActivity extends AppCompatActivity {
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImageUrls);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 }
