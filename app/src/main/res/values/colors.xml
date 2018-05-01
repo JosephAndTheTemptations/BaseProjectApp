@@ -3,7 +3,7 @@
 
     <color name="colorPrimary">#ff8C00</color>>
     <color name="colorPrimaryDark">#333333</color>
-    <color name="colorAccent">#ffffff</color>
+    <color name="colorAccent">#ff8C00</color>
     <color name="windowBackground">#FFA500</color>
     <color name="scrollBackground">#ffffff</color>
     <color name="ButtonBackground">#000000</color>
