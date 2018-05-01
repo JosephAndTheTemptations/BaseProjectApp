@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
         }
         Toolbar myToolbar = (Toolbar) findViewById(app_bar);
+
         setSupportActionBar(myToolbar);
         Log.d(TAG, "onCreate: started.");
 
