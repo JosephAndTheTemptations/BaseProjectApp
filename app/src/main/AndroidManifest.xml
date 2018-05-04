@@ -7,6 +7,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="com.google.android.providers.gsf.permissions.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
 
 
 
@@ -43,9 +45,11 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/. 
         -->
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyC3Vv8Tq4LBqgLORkozTUP33EuVDtodzB4" />
+
 
         <activity
             android:name=".ui.activities.MapsActivity"
@@ -56,6 +60,14 @@
         <activity
             android:name=".ui.activities.SettingsActivity"
             android:label="@string/title_activity_settings"></activity>
+
+        <activity android:name=".ui.activities.TextActivity"
+            android:label="Create Message"
+            android:theme="@style/AppTheme">
+
+        </activity>
+
+        <receiver android:name=".ui.activities.AlarmReceiver" />
 
     </application>
 
