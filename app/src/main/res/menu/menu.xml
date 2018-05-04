@@ -14,7 +14,7 @@
 
     <item
         android:id="@+id/map_settings"
-        android:title="@string/map_button"
+        android:title="Destination"
         app:showAsAction="never" />
 
 </menu>
