@@ -1,8 +1,4 @@
 <resources>
-
-    <!-- Base application theme. -->
-  
-  <!-- Add Christian's theme here -->
   
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
