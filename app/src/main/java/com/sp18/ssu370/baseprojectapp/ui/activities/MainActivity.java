@@ -74,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(settings);
                 break;
             case R.id.create_message:
-                Toast.makeText(getApplicationContext(), "Messages", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, TextActivity.class));
+                //Toast.makeText(getApplicationContext(), "Messages", Toast.LENGTH_SHORT).show();
                 // Go to messages
                 break;
             default:
