@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sp18.ssu370.baseprojectapp.ui.activities.TravelInfo">
+
+    <TextView
+        android:id="@+id/instructions"
+        android:text="@string/instructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".05"
+        android:textColor="@color/ButtonBackground"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/instructions2"
+        android:text="@string/instructions2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".10"
+        android:textColor="@color/ButtonBackground"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias=".1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".25"
+        android:layout_marginEnd="8dp"
+        android:text="@string/distance_to_destination"
+        android:textColor="@color/ButtonBackground"
+        android:layout_gravity="center"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias=".1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".35"
+        android:text="@string/time_to_destination"
+        android:textColor="@color/ButtonBackground"
+        android:layout_gravity="center"
+        android:textSize="15sp"
+        />
+
+
+    <TextView
+        android:id="@+id/valueText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/ButtonBackground"
+        android:layout_marginStart="10dp"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/distance"
+        app:layout_constraintLeft_toRightOf="@id/distance"
+        app:layout_constraintTop_toTopOf="@id/distance" />
+
+
+</android.support.constraint.ConstraintLayout>

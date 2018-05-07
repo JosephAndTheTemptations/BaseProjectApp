@@ -2,6 +2,7 @@ package com.sp18.ssu370.baseprojectapp.ui.activities;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -80,6 +81,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private GeoDataClient mGeoDataClient;
 
+    private Button travelInfo;
+
+    double latitude, longitude;
+
+    private static double end_latitude;
+
+    private static double end_longitude;
 
     LocationManager locationManager;
 
@@ -92,6 +100,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mSearchText = (AutoCompleteTextView) findViewById(R.id.search_edit_text);
 
         getLocationPermission();
+
+        travelInfo = findViewById(R.id.travel_info);
+        travelInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(MainActivity.this, SetDestinationActivity.class));
+                startActivity(new Intent(MapsActivity.this, TravelInfo.class));
+            }
+        });
 
     }
 
@@ -150,6 +167,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
 
+            end_latitude = address.getLatitude();
+
+            end_longitude = address.getLongitude();
+
             String str = list.get(0).getAddressLine(0);
             //str += list.get(0).getCountryName();
            // hideSoftKeyboard();
@@ -159,6 +180,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             hideSoftKeyboard();
 
         }
+    }
+
+    public static Double endValue(){
+
+        return end_latitude;
     }
 
     //private initMap new. This code was part of onCreate.
