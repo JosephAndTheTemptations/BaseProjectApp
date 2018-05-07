@@ -2,6 +2,7 @@ package com.sp18.ssu370.baseprojectapp.ui.activities;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -22,6 +23,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,7 +32,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.location.places.AutocompletePrediction;
 import com.google.android.gms.location.places.GeoDataClient;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceBuffer;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -74,6 +81,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private GeoDataClient mGeoDataClient;
 
+    private Button travelInfo;
+
+    double latitude, longitude;
+
+    private static double end_latitude;
+
+    private static double end_longitude;
 
     LocationManager locationManager;
 
@@ -86,6 +100,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mSearchText = (AutoCompleteTextView) findViewById(R.id.search_edit_text);
 
         getLocationPermission();
+
+        travelInfo = findViewById(R.id.travel_info);
+        travelInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(MainActivity.this, SetDestinationActivity.class));
+                startActivity(new Intent(MapsActivity.this, TravelInfo.class));
+            }
+        });
 
     }
 
@@ -144,6 +167,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
 
+            end_latitude = address.getLatitude();
+
+            end_longitude = address.getLongitude();
+
             String str = list.get(0).getAddressLine(0);
             //str += list.get(0).getCountryName();
            // hideSoftKeyboard();
@@ -153,6 +180,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             hideSoftKeyboard();
 
         }
+    }
+
+    public static Double endValue(){
+
+        return end_latitude;
     }
 
     //private initMap new. This code was part of onCreate.
@@ -390,5 +422,28 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         }
 
+    private AdapterView.OnItemClickListener mAutocompleteListener = new AdapterView.OnItemClickListener(){
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            hideSoftKeyboard();
+
+            final AutocompletePrediction item = mPlaceAutoCompleteAdapter.getItem(i);
+            final String placeId = item.getPlaceId();
+
+            PendingResult<PlaceBuffer> placeResult = Places.GeoDataApi
+                    .getPlaceById(mGoogleApiClient, placeId);
+
+            placeResult.setResultCallback(mUpdatePlaceDetailsCallback);
+        }
+    };
+
+    private ResultCallback<PlaceBuffer> mUpdatePlaceDetailsCallback = new ResultCallback<PlaceBuffer>() {
+        @Override
+        public void onResult(@NonNull PlaceBuffer places) {
+           if (!places.getStatus().isSuccess()){
+
+           }
+        }
+    };
 
 }
