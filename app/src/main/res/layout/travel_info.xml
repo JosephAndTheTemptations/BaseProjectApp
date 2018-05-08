@@ -113,10 +113,10 @@
 
     <ImageView
         android:id="@+id/text_page"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginRight="14dp"
         android:src="@mipmap/ic_next_page"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
