@@ -17,4 +17,9 @@
         android:title="Destination"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/database_tester"
+        android:title="Database"
+        app:showAsAction="never" />
+
 </menu>

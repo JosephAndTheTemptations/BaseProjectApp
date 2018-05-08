@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.sp18.ssu370.baseprojectapp.R;
 
+import org.w3c.dom.Text;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -30,11 +32,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<String> mImages = new ArrayList<>();
     private Context mContext;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> imageNames, ArrayList<String> images ) {
-        mImageNames = imageNames;
-        mImages = images;
-        mContext = context;
+    public RecyclerViewAdapter(){
     }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -87,5 +87,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             imageName = itemView.findViewById(R.id.image_name);
             parentLayout = itemView.findViewById(R.id.parent_layout);
         }
+    }
+
+    public RecyclerViewAdapter(Context context, ArrayList<String> imageNames, ArrayList<String> images ) {
+        mImageNames = imageNames;
+        mImages = images;
+        mContext = context;
     }
 }
