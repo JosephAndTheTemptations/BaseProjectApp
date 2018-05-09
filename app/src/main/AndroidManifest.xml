@@ -71,6 +71,9 @@
             android:theme="@style/AppTheme"
             android:label="@string/travel_info_title"></activity>
 
+        <activity android:name=".ui.activities.DatabaseTester"
+            android:label="Database"></activity>
+
         <receiver android:name=".ui.activities.AlarmReceiver" />
 
     </application>
