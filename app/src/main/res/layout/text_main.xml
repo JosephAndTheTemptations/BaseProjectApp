@@ -32,7 +32,7 @@
         <ImageView
 
             android:id="@+id/add_contact_image_view"
-            android:layout_width="50dp"
+            android:layout_width="48dp"
             android:layout_height="match_parent"
             android:src="@mipmap/ic_contacts" />
 
@@ -51,14 +51,29 @@
 
 
     <ImageView
-        android:id="@+id/add_contact_image_view2"
+        android:id="@+id/calendar_image_view"
+        android:layout_width="73dp"
+        android:layout_height="58dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:src="@mipmap/ic_calendar" />
+
+    <TextView
+        android:id="@+id/textView_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="45dp"
-        android:src="@mipmap/ic_launcher_round"/>
+        android:text="date not chosen"
+        android:textSize="20sp" />
 
 
+    <ImageView
+        android:id="@+id/add_contact_image_view2"
+        android:layout_width="wrap_content"
+        android:layout_height="49dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:src="@mipmap/ic_launcher_round" />
 
 
     <TextView
@@ -67,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="time not chosen"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/send_button"
@@ -75,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="14dp"
-        android:text="Send Message" />
+        android:text="Schedule Message" />
     <!--android:background="@drawable/edit_text_style"-->
 
 
@@ -84,20 +99,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="21dp"
         android:text="Message not sent yet."
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/colorPrimaryDark" />
 
-    <TextView
-        android:id="@+id/delivery_status_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:layout_marginTop="10dp"
-        android:text="Message not delivered yet."
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/colorPrimaryDark" />
+    <!--<TextView-->
+        <!--android:id="@+id/delivery_status_text_view"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_vertical|center_horizontal"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:text="Message not delivered yet."-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:textColor="@color/colorPrimaryDark" />-->
 </LinearLayout>
 
 
