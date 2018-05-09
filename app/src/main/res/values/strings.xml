@@ -16,8 +16,8 @@
     <string name="travel_info_title">Travel\u0020Info</string>
     <string name="distance_to_destination">Distance to destination: </string>
     <string name="time_to_destination">Time to reach destination: </string>
-    <string name="instructions">Copy and paste the info below</string>
-    <string name="instructions2">to send on the next page</string>
+    <string name="instructions">Click the button below to copy the</string>
+    <string name="instructions2">information and send on the next page</string>
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->

@@ -38,6 +38,7 @@
 
     <TextView
         android:id="@+id/distance"
+        android:textIsSelectable="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,6 +56,7 @@
 
     <TextView
         android:id="@+id/time"
+        android:textIsSelectable="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -72,6 +74,7 @@
 
     <TextView
         android:id="@+id/valueText"
+        android:textIsSelectable="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -82,5 +85,40 @@
         app:layout_constraintLeft_toRightOf="@id/distance"
         app:layout_constraintTop_toTopOf="@id/distance" />
 
+    <TextView
+        android:id="@+id/travelTime"
+        android:textIsSelectable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/ButtonBackground"
+        android:layout_marginStart="10dp"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/time"
+        app:layout_constraintLeft_toRightOf="@id/time"
+        app:layout_constraintTop_toTopOf="@id/time" />
+
+    <ImageView
+        android:id="@+id/clipBoard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintVertical_bias=".5"
+        android:src="@mipmap/ic_clip"
+        />
+
+    <ImageView
+        android:id="@+id/text_page"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginRight="14dp"
+        android:src="@mipmap/ic_next_page"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
