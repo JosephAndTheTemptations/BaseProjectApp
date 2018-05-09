@@ -13,8 +13,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
-import android.widget.Toast;
 import android.view.Window;
+import android.widget.Toast;
 
 
 import com.sp18.ssu370.baseprojectapp.R;
@@ -78,6 +78,12 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), "Messages", Toast.LENGTH_SHORT).show();
                 // Go to messages
                 break;
+            case R.id.database_tester:
+                Intent database = new Intent(this, DatabaseTester.class);
+                startActivity(database);
+                //Toast.makeText(getApplicationContext(), "Database", Toast.LENGTH_SHORT).show();
+                break;
+
             default:
                 // Error
         }
