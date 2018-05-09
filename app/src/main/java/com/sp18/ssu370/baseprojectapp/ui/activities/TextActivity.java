@@ -22,12 +22,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.text.format.DateFormat;
+import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethod;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,17 +45,22 @@ import android.app.AlarmManager;
 import com.sp18.ssu370.baseprojectapp.R;
 
 import java.util.concurrent.TimeUnit;
+import android.app.DatePickerDialog;
 
 
 import java.util.List;
 
 import static android.Manifest.permission.SEND_SMS;
 
+//import java.util.ArrayList;
+//import java.text.DateFormat;
+//import java.util.Date;
 
 
 
 
-public class TextActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
+
+public class TextActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     private static final int REQUEST_SMS = 0;
     private static final int REQ_PICK_CONTACT = 2;
@@ -63,16 +70,26 @@ public class TextActivity extends AppCompatActivity implements TimePickerDialog.
     private Button sendButton;
     private ImageView pickContact;
     private TextView sendStatusTextView;
-    private TextView deliveryStatusTextView;
+    //private TextView deliveryStatusTextView;
     private ImageView pickTime;
+    private ImageView pickDate;
     //private Button chooseTime;
     String amPm;
     int currentHour;
     Long user_hr_in_millis;
     Long user_min_in_millis;
     Long desired_time;
-    //Long current_hr_in_millis;
+
     Long total_time;
+
+    int desired_year;
+    int desired_month;
+    int desired_day;
+
+    int current_year;
+    int current_month;
+    int current_day;
+
 
 
 
@@ -91,16 +108,33 @@ public class TextActivity extends AppCompatActivity implements TimePickerDialog.
                 timePicker.show(getSupportFragmentManager(), "time picker");
             }
 
-
+//        Button button = (Button) findViewById(R.id.button);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                DialogFragment datePicker = new DatePickerFragment();
+//                datePicker.show(getSupportFragmentManager(), "date picker");
+//                }
+//
+//            }
+        });
+        pickDate = (ImageView) findViewById(R.id.calendar_image_view);
+        pickDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getSupportFragmentManager(), "date picker");
+                }
         });
 
 
-        //chooseTime = (Button) findViewById(R.id.pick_time);
+
+                //chooseTime = (Button) findViewById(R.id.pick_time);
         phoneEditText = (EditText) findViewById(R.id.phone_number_edit_text);
         messageEditText = (EditText) findViewById(R.id.message_edit_text);
         sendButton = (Button) findViewById(R.id.send_button);
         sendStatusTextView = (TextView) findViewById(R.id.message_status_text_view);
-        deliveryStatusTextView = (TextView) findViewById(R.id.delivery_status_text_view);
+        //deliveryStatusTextView = (TextView) findViewById(R.id.delivery_status_text_view);
         pickContact = (ImageView) findViewById(R.id.add_contact_image_view);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,6 +214,35 @@ public class TextActivity extends AppCompatActivity implements TimePickerDialog.
 
 
     @Override
+    public void onDateSet(DatePicker view, int targetYear, int targetMonth, int targetdayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, targetYear);
+        c.set(Calendar.MONTH, targetMonth);
+        c.set(Calendar.DAY_OF_MONTH, targetdayOfMonth);
+        String currentDateString = java.text.DateFormat.getDateInstance(java.text.DateFormat.FULL).format(c.getTime());
+        TextView textView_2 = (TextView) findViewById(R.id.textView_2);
+        textView_2.setText(currentDateString);
+
+        //desired_year = year;
+
+        //desired_month = month;
+        //desired_day = dayOfMonth;
+
+        Calendar y = Calendar.getInstance();
+        current_year = y.get(Calendar.YEAR);
+        current_month = y.get(Calendar.MONTH);
+        current_day = y.get(Calendar.DAY_OF_MONTH);
+
+        //int yearUntilAlarm = targetYear - current_year;
+
+        //long years_in_millis = yearUntilAlarm;
+        //years_in_millis = DateUtils.YEAR_IN_MILLIS;
+        //long years_in_millis = DateUtils.YEAR_IN_MILLIS(yearUntilAlarm);
+        //long years_in_millis = DateUtils.DAY_IN_MILLIS
+        //long years = Y
+    }
+
+    @Override
     public void onTimeSet(TimePicker view, int targetHourOfDay, int targetMinute) {
 
         TextView textView = (TextView) findViewById(R.id.textView);
@@ -200,23 +263,20 @@ public class TextActivity extends AppCompatActivity implements TimePickerDialog.
             currentHour = targetHourOfDay;
         }
 
-        textView.setText(String.format("%02d:%02d", currentHour, targetMinute) + ' ' + amPm);
+        //textView.setText(String.format("%02d:%02d", currentHour, targetMinute) + ' ' + amPm);
 
-        //int hour_min = hourOfDay + minute;
-        //Long total_hour_min = TimeUnit.HOURS.toMillis(hour_min);
+        if (DateFormat.is24HourFormat(this)) {
+            textView.setText(String.format("%02d:%02d", targetHourOfDay, targetMinute));
+            }
+        else {
+            textView.setText(String.format("%02d:%02d", currentHour, targetMinute) + ' ' + amPm);
+        }
+
+
 
         user_hr_in_millis = TimeUnit.HOURS.toMillis(targetHourOfDay);
-        //minutes_in_millis = TimeUnit.MINUTES.toMillis(minute);
-        //user_min_in_millis = minute * 60 * 1000;
+
         user_min_in_millis = TimeUnit.MINUTES.toMillis(targetMinute);
-//        total_time = user_hr_in_millis + user_min_in_millis;
-        //desired_time = setTimeInMillis(total_time);
-
-        //desired_time = DateFormat.format("MM/dd/yyyy", new Date(total_time));
-
-
-        //user_min_in_millis = setCurrentHour(Integer currentHour);
-        //int hr = setCurrentHour(Integer currentHour);
 
         Calendar x = Calendar.getInstance();
         int currentHour = x.get(Calendar.HOUR_OF_DAY);
@@ -264,73 +324,26 @@ public class TextActivity extends AppCompatActivity implements TimePickerDialog.
 
     public void scheduleText() {
 
-//        Calendar x = Calendar.getInstance();
-        //desired_time = total_time;
-
-//        total_time = user_hr_in_millis + user_min_in_millis;
-        //desired_time = setTimeInMillis
-        //desired_time = computeTime(total_time);
-//        Long time = new
-        //total_time = total_time;
-        //Long current_time = System.currentTimeMillis();
-
-        //desired_time = time + total_time;
-
-        //Long time = setTimeInMillis(total_time);
-
-
-        //total_time = user_hr_in_millis + user_min_in_millis;
-//        current_hr = x.get(Calendar.HOUR_OF_DAY);
-
-        //current_hr_in_millis = TimeUnit.HOURS.toMillis(current_hr);
-
-//        Long current_time = new GregorianCalendar().getTimeInMillis();
-        //time = desired_time;
-
-
-
-//        if (user_hr_in_millis == current_hr_in_millis)
-//            desired_time = ((time - user_hr_in_millis) + user_min_in_millis);
-//        else
-//            desired_time = total_time - time;
-        //desired_time = user_hr_in_millis + user_min_in_millis;
-        //total_time = time - user_hr_in_millis + user_min_in_millis;
-
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        //ArrayList<PendingIntent> intentArray = new ArrayList<PendingIntent>();
 
         Intent intentAlarm = new Intent(this, AlarmReceiver.class);
         intentAlarm.putExtra("PHONE_EDIT_TEXT", phoneEditText.getText().toString());
         intentAlarm.putExtra("MESSAGE_EDIT_TEXT", messageEditText.getText().toString());
+
+
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
-
-//        alarmManager.set(AlarmManager.RTC_WAKEUP, total_time, pendingIntent);
-//        Toast.makeText(this, "Text Scheduled", Toast.LENGTH_LONG).show();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, total_time, pendingIntent);
+            Toast.makeText(this, "Message Scheduled", Toast.LENGTH_LONG).show();
         }
+
         else {
             alarmManager.set(AlarmManager.RTC_WAKEUP, total_time, pendingIntent);
+            Toast.makeText(this, "Message Scheduled", Toast.LENGTH_LONG).show();
 
         }
-        Toast.makeText(this, "Message Scheduled", Toast.LENGTH_LONG).show();
-
-
     }
-
-//    public class AlarmReceiver extends BroadcastReceiver{ // Newly Added
-//        @Override
-//        public void onReceive(Context context, Intent intent) {
-//            //String phone_text = intent.getStringExtra("PHONE_EDIT_TEXT");
-//            //String message = intent.getStringExtra("MESSAGE_EDIT_TEXT");
-//            sendMySMS(); // in parameters put phone_text, message
-//
-//        }
-//    }
-
-
-
 
 
 
@@ -376,7 +389,7 @@ public class TextActivity extends AppCompatActivity implements TimePickerDialog.
                     case Activity.RESULT_CANCELED:
                         break;
                 }
-                deliveryStatusTextView.setText(s);
+                //deliveryStatusTextView.setText(s);
                 phoneEditText.setText("");
                 messageEditText.setText("");
             }
@@ -426,8 +439,8 @@ public class TextActivity extends AppCompatActivity implements TimePickerDialog.
                     Toast.makeText(getApplicationContext(), "Permission Granted, Now you can access sms", Toast.LENGTH_SHORT).show();
                     String phone = phoneEditText.getText().toString();
                     String message = messageEditText.getText().toString();
-                    sendMySMS(phone, message); // in parameter put phone, messgae
-                    //scheduleText();
+                    //sendMySMS(phone, message); // in parameter put phone, message
+                    scheduleText();
 
                 }else {
                     Toast.makeText(getApplicationContext(), "Permission Denied, You cannot access and sms", Toast.LENGTH_SHORT).show();
@@ -480,5 +493,5 @@ public class TextActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
 
-
 }
+
