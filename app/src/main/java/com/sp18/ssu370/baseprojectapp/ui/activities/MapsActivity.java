@@ -27,6 +27,7 @@ import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,9 +82,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private GeoDataClient mGeoDataClient;
 
-    private Button travelInfo;
+    private ImageView travelInfo;
 
-    double latitude, longitude;
+    private static double latitude;
+
+    private static double longitude;
 
     private static double end_latitude;
 
@@ -179,12 +182,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.2f));
             hideSoftKeyboard();
 
+            distanceMatrix();
+
         }
     }
 
-    public static Double endValue(){
+    public static Float travelDistance(){
 
-        return end_latitude;
+        float result[] = new float[1];
+        Location.distanceBetween(latitude, longitude, end_latitude, end_longitude, result);
+
+        return result[0];
     }
 
     //private initMap new. This code was part of onCreate.
@@ -214,9 +222,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     if (startLocation == false) {
                         return;
                     }
-                    double latitude = location.getLatitude();
+                    /*double latitude = location.getLatitude();
 
-                    double longitude = location.getLongitude();
+                    double longitude = location.getLongitude();*/
+
+                    latitude = location.getLatitude();
+
+                    longitude = location.getLongitude();
 
                     LatLng latLng = new LatLng(latitude, longitude);
 
@@ -274,9 +286,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     if (startLocation == false) {
                         return;
                     }
-                    double latitude = location.getLatitude();
+                    /*double latitude = location.getLatitude();
 
-                    double longitude = location.getLongitude();
+                    double longitude = location.getLongitude();*/
+
+                    latitude = location.getLatitude();
+
+                    longitude = location.getLongitude();
 
                     LatLng latLng = new LatLng(latitude, longitude);
 
@@ -390,7 +406,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }*/
 
-    public void onMapSearch(View view) {
+    /*public void onMapSearch(View view) {
         EditText locationSearch = (EditText) findViewById(R.id.search_edit_text);
         String location = locationSearch.getText().toString();
         List<Address> addressList = null;
@@ -414,7 +430,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             hideSoftKeyboard();
 
         }
-    }
+    }*/
 
     private void hideSoftKeyboard(){
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -445,5 +461,24 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
            }
         }
     };
+
+    public static String distanceMatrix(){
+
+        String url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins="+ latitude + "," + longitude + "&destinations=" + end_latitude + "," + end_longitude + "&mode=driving&language=en&key=AIzaSyC3Vv8Tq4LBqgLORkozTUP33EuVDtodzB4";
+        //new GeoTask(MapsActivity.this).execute(url);
+        return url;
+    };
+
+    /*@Override
+    public void setDouble(String result) {
+        String res[]=result.split(",");
+        Double min=Double.parseDouble(res[0])/60;
+        int dist=Integer.parseInt(res[1])/1000;
+
+        //return dist;
+        //tv_result1.setText("Duration= " + (int) (min / 60) + " hr " + (int) (min % 60) + " mins");
+        //tv_result2.setText("Distance= " + dist + " kilometers");
+
+    }*/
 
 }
